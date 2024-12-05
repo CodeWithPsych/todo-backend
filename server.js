@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import todosRouter from './routes/todoRouter.js';
+
 dotenv.config();
 
 const app = express();
@@ -10,13 +11,12 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5173", // Explicitly state the origin
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: "http://localhost:5173", // Allow only this origin
+  methods: ["GET", "POST", "PUT", "DELETE"], // List allowed HTTP methods
+  credentials: true, // Enable credentials (cookies, etc.)
   allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
-  credentials: true // Allow credentials (cookies, etc.)
 }));
-
-app.use(express.json())
+app.use(express.json());
 
 app.use("/api", todosRouter);
 
