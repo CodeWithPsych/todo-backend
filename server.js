@@ -9,13 +9,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors(
-  {
-      origin: ["http://localhost:5173"],
-      methods: ["POST", "GET"],
-      credentials: true
-  }
-));
+app.use(cors({
+  origin: "http://localhost:5173", // Explicitly state the origin
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
+  credentials: true // Allow credentials (cookies, etc.)
+}));
+
 app.use(express.json())
 
 app.use("/api", todosRouter);
