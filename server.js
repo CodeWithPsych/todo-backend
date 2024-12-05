@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors(
   {
-      origin: ["https://psych-redux-todo.vercel.app"],
+      origin: ["https://psych-redux-todo.vercel.app/"],
       methods: ["POST", "GET"],
       credentials: true
   }
